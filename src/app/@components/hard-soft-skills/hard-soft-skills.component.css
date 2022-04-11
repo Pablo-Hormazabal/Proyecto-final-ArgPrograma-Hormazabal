@@ -1,0 +1,59 @@
+/* HARD Y SOFT SKILLS*/
+
+.hard-soft-skills {
+    justify-content: center;
+    padding-left: auto;
+    padding-right: auto;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: #000063;
+}
+
+.hard-soft-skills .content {
+    background: rgba(162, 175, 188, 0.3);
+    /*border-radius: 60px 60px 60px 60px;*/
+    padding: 2%;
+    height: auto;
+    justify-content: center;
+    padding-left: auto;
+    padding-right: auto;
+    width: 70%;
+    color: #bdbdbd
+}
+
+.hardsoftimg img {
+    width: 100%;
+}
+
+.hardsoftimg {
+    display: grid;
+    place-items: center;
+    text-shadow: 2px 2px 0px #0043a7;
+}
+
+.hardsoftimg {
+    width: 30%;
+    background: #212121;
+    color: #fff;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.hardsoftimg h1 {
+    font-size: 35px;
+    text-align: center;
+}
+
+
+/* BARRA DE NIVEL*/
+
+meter {
+    width: 350px;
+    height: 50px;
+}
+
+.imageneducacion {
+    display: grid;
+    place-items: center;
+}

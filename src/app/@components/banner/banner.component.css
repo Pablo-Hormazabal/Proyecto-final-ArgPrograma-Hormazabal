@@ -1,0 +1,26 @@
+    /* BANNER PRINCIPAL*/
+    
+    .banner1 {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+    
+    .banner {
+        width: 50%;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        background: rgba(16, 34, 67, 0.5);
+        border-radius: 60px 60px 60px 60px;
+        padding: 3%;
+        text-shadow: 2px 2px 0px #0043a7;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.25em;
+    }

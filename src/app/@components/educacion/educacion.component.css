@@ -1,0 +1,68 @@
+/* EDUCACION*/
+
+.educacion {
+    justify-content: center;
+    padding-left: auto;
+    padding-right: auto;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: #000063;
+}
+
+.educacion .content {
+    background: rgba(162, 175, 188, 0.3);
+    /*border-radius: 60px 60px 60px 60px;*/
+    padding: 2%;
+    height: auto;
+    justify-content: center;
+    padding-left: auto;
+    padding-right: auto;
+    width: 70%;
+    color: #bdbdbd
+}
+
+.imageneducacion img {
+    width: 90%;
+}
+
+.imageneducacion {
+    width: 30%;
+    background: #212121;
+    padding: 10px;
+    color: #fff;
+    padding-left: auto;
+    padding-right: auto;
+    display: grid;
+    place-items: center;
+    text-shadow: 2px 2px 0px #0043a7;
+}
+
+.imageneducacion h1 {
+    font-size: 35px;
+    text-align: center;
+}
+
+.edugeneral {
+    padding: 0 130px;
+}
+
+.logoyedu {
+    display: flex;
+}
+
+.logoyedu img {
+    width: 70px;
+}
+
+.textedu {
+    margin-left: 60px;
+}
+
+.content h1 {
+    font-size: 1.75em;
+}
+
+.content h2 {
+    font-size: 1.5em;
+}

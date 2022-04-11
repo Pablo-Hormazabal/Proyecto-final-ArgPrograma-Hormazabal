@@ -1,0 +1,174 @@
+<!-- ACERCA DE -->
+<section class="acercade">
+    <div class="fotoacercade">
+        <div>
+            <img src="assets/img/perfil1.jpg" alt="perfil" class="fotoperfil">
+            <h1>
+                Sobre mi
+            </h1>
+        </div>
+    </div>
+    <div class="content" id="main-container">
+        <div class="datos">
+            <div id="Datosright">
+                <div class="sobremi" id="main-sobremi">
+                    <div>
+                        <button (click)="onOpenModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
+                    </div>
+                    <div *ngFor="let acercade of acercades">
+                        <div>
+                            <p>
+                                Descripcion: <b> {{acercade?.descripcion}}</b>
+                            </p>
+                            <p>
+                                <b>Nombre: </b><b>{{acercade?.nombre}} {{acercade?.apellido}}</b>
+                            </p>
+                            <p>
+                                <b>Fecha de Nacimiento:</b> {{acercade?.fecha_nacimiento}}
+                            </p>
+                            <p id>
+                                <b>Ciudad:</b> {{acercade?.ciudad}}
+                            </p>
+                            <p>
+                                <b>Celular:</b> {{acercade?.celular}}
+                            </p>
+                            <p>
+                                <b>E-mail:</b> {{acercade?.email}}
+                            </p>
+                        </div>
+                        <div class="float-right btn-group btn-group-sm">
+                            <a (click)="onOpenModal(acercade, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
+                            <a (click)="onOpenModal(acercade, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Add Employee Modal -->
+<div class="modal fade" id="addAcercadeModal" tabindex="-1" role="dialog" aria-labelledby="addAcercadeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAcercadeModalLabel">Agregar otra descripcion:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddAcercade(addForm)">
+                    <div class="form-group">
+                        <label for="nombre"><b>Nombre:</b></label>
+                        <input type="text" ngModel name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+                    </div>
+                    <input type="hidden" ngModel name="id" id="id" class="form-control" placeholder="Email">
+                    <div class="form-group">
+                        <label for="nombre"><b>Apellido:</b></label>
+                        <input type="text" ngModel name="apellido" id="apellido" class="form-control" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre"><b>Fecha de Nacimiento:</b></label>
+                        <input type="text" ngModel name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre"><b>Ciudad:</b></label>
+                        <input type="text" ngModel name="ciudad" id="ciudad" class="form-control" placeholder="Ciudad">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre"><b>Celular:</b></label>
+                        <input type="text" ngModel name="celular" id="celular" class="form-control" placeholder="Celular">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><b>Email:</b></label>
+                        <input type="email" ngModel name="email" id="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="celular"> <b>Descripcion:</b></label>
+                        <input type="text" ngModel name="descripcion" id="descripcion" name="descripcion" class="form-control" placeholder="Descripcion">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="add-acercade-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+
+<div class="modal fade" id="updateAcercadeModal" tabindex="-1" role="dialog" aria-labelledby="acercadeEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="updateAcercadeModalLabel"><b>Editar sección sobre mi:</b></h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm">
+                    <div class="form-group">
+                        <label for="nombre"><b>Nombre:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.nombre}}" name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Name">
+                    </div>
+                    <input type="hidden" ngModel="{{editAcercade?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                    <div class="form-group">
+                        <label for="nombre"><b>Apellido:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.apellido}}" name="apellido" class="form-control" id="apellido" aria-describedby="emailHelp" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre"><b>Fecha de Nacimiento:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.fecha_nacimiento}}" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="Fecha de Nacimiento">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre"><b>Ciudad:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.ciudad}}" name="ciudad" class="form-control" id="ciudad" aria-describedby="emailHelp" placeholder="Ciudad">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre"><b>Celular:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.celular}}" name="celular" class="form-control" id="celular" aria-describedby="emailHelp" placeholder="Celular">
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><b>Email:</b></label>
+                        <input type="email" ngModel="{{editAcercade?.email}}" name="email" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="celular"> <b>Descripcion:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.descripcion}}" name="descripcion" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-acercade-form" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+                        <button (click)="onUpdateAcercade(editForm.value)" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteAcercadeModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModelLabel">Delete Acercade</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro que desea eliminar a {{eliminarAcercade?.nombre}}?</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button (click)="onDeleteAcercade(eliminarAcercade.id)" class="btn btn-danger" data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

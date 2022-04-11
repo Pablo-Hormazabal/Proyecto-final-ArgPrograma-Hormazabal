@@ -1,0 +1,131 @@
+<!-- HARD SOFT AND SKILLS -->
+<section class="hard-soft-skills">
+    <div class="hardsoftimg">
+        <img src="assets/img/skills.png" alt="">
+        <div>
+            <h1>
+                Hard & Soft Skills
+            </h1>
+        </div>
+    </div>
+    <div class="content col-sm-3 col-md-3 col-lg-3">
+        <div>
+            <button (click)="onOpenHardSoftSkillsModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
+        </div>
+        <br>
+        <h4>Habilidades blandas:</h4>
+        <h4>Lenguajes de programación:</h4>
+        <div class="hardSoftSkills2" id="main-hardSoftSkills">
+            <div *ngFor="let hardSoftSkills of hardSoftSkillss">
+                <div>
+                    <div>
+                        <circle-progress [imageSrc]="'{{hardSoftSkills.link}}'" [imageHeight]="50" [imageWidth]="50" [showImage]="true" [percent]="95" [radius]="50" [title]="'HTML'" [titleColor]="'white'" [showSubtitle]="false" [showUnits]="false" [outerStrokeWidth]="8" [innerStrokeWidth]="2"
+                            [outerStrokeColor]="'#65fff9'" [innerStrokeColor]="'#bbeef9'" [animation]="true" [animationDuration]="600">
+                        </circle-progress>
+                    </div>
+                    <br>
+                </div>
+                <div class="float-right btn-group btn-group-sm">
+                    <a (click)="onOpenHardSoftSkillsModal(hardSoftSkills, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
+                    <a (click)="onOpenHardSoftSkillsModal(hardSoftSkills, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+        </div>
+        <h4>Otro:</h4>
+
+    </div>
+</section>
+
+
+<!-- Add Employee Modal -->
+<div class="modal fade" id="addHardSoftSkillsModal" tabindex="-1" role="dialog" aria-labelledby="addHardSoftSkillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addHardSoftSkillsModalLabel">Agregar otra HardSoftSkills:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddHardSoftSkills(addForm)">
+                    <div class="form-group">
+                        <label for="nombre"><b>Nombre:</b></label>
+                        <input type="text" ngModel name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+                    </div>
+                    <input type="hidden" ngModel name="id" id="id" class="form-control" placeholder="Email">
+                    <div class="form-group">
+                        <label for="nivel"><b>Porcentaje:</b></label>
+                        <input type="text" ngModel name="nivel" id="nivel" class="form-control" placeholder="Porcentaje">
+                    </div>
+                    <div class="form-group">
+                        <label for="link"> <b>Imagen link:</b></label>
+                        <input type="text" ngModel name="link" id="link" name="link" class="form-control" placeholder="Imagen Link">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-hardSoftSkills-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+
+<div class="modal fade" id="updateHardSoftSkillsModal" tabindex="-1" role="dialog" aria-labelledby="hardSoftSkillsEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="updateHardSoftSkillsModalLabel"><b>Editar sección HardSoftSkills:</b></h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+            </div>
+            <div class="modal-body">
+                <form #editForm="ngForm">
+                    <div class="form-group">
+                        <label for="nombre"><b>Nombre:</b></label>
+                        <input type="text" ngModel="{{editHardSoftSkills?.nombre}}" name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre">
+                    </div>
+                    <input type="hidden" ngModel="{{editHardSoftSkills?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                    <div class="form-group">
+                        <label for="nivel"><b>Porcentaje:</b></label>
+                        <input type="text" ngModel="{{editHardSoftSkills?.nivel}}" name="nivel" class="form-control" id="nivel" aria-describedby="emailHelp" placeholder="Porcentaje">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="link"> <b>Imagen link:</b></label>
+                        <input type="text" ngModel="{{editHardSoftSkills?.link}}" name="link" class="form-control" id="link" name="link" placeholder="Link">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add-hardSoftSkills-form" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+                        <button (click)="onUpdateHardSoftSkills(editForm.value)" data-dismiss="modal" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteHardSoftSkillsModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModelLabel">Delete HardSoftSkills</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+             </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro que desea eliminar a {{eliminarHardSoftSkills?.nombre}}?</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button (click)="onDeleteHardSoftSkills(eliminarHardSoftSkills.id)" class="btn btn-danger" data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
