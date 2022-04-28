@@ -7,7 +7,7 @@
         </h1>
     </div>
     <div class="content">
-        <div>
+        <div *ngIf="isAdmin">
             <button (click)="onOpenExperienciaModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
         </div>
         <div class="experiencia2" id="main-experiencia">
@@ -23,7 +23,7 @@
                     </div>
                     <br>
                 </div>
-                <div class="float-right btn-group btn-group-sm">
+                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
                     <a (click)="onOpenExperienciaModal(experiencia, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
                     <a (click)="onOpenExperienciaModal(experiencia, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                 </div>

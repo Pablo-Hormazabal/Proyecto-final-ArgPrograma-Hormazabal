@@ -4,6 +4,6 @@ export class Educacion {
     fechainicio: string;
     fechafinal: string;
     descripcion: string;
-    imagenEducacion: string;
+    imagen_educacion: string;
 
 }

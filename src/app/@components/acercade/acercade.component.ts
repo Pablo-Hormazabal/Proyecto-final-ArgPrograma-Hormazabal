@@ -3,6 +3,7 @@ import { Acercade } from 'src/app/models/acercade';
 import { AcercadeService } from 'src/app/servicios/acercade.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-acercade',
@@ -13,12 +14,21 @@ export class AcercadeComponent implements OnInit {
   public acercades:Acercade[]=[];
   public editAcercade: Acercade;
   public eliminarAcercade: Acercade;
+  roles: string[];
+  isAdmin = false;
 
-  constructor(private acercadeService: AcercadeService) { }
+  constructor(private acercadeService: AcercadeService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.acercadeService.getAcercade()
     .subscribe(response=> this.acercades=response);
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
   public getAcercade(): void {
     this.acercadeService.getAcercade().subscribe(

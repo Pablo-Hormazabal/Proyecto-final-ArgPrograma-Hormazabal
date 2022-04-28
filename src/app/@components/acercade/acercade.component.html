@@ -1,18 +1,20 @@
 <!-- ACERCA DE -->
+
 <section class="acercade">
     <div class="fotoacercade">
         <div>
-            <img src="assets/img/perfil1.jpg" alt="perfil" class="fotoperfil">
             <h1>
                 Sobre mi
             </h1>
+            <img src="assets/img/perfil1.jpg" alt="perfil" class="fotoperfil">
+
         </div>
     </div>
     <div class="content" id="main-container">
         <div class="datos">
             <div id="Datosright">
                 <div class="sobremi" id="main-sobremi">
-                    <div>
+                    <div *ngIf="isAdmin">
                         <button (click)="onOpenModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
                     </div>
                     <div *ngFor="let acercade of acercades">
@@ -36,7 +38,7 @@
                                 <b>E-mail:</b> {{acercade?.email}}
                             </p>
                         </div>
-                        <div class="float-right btn-group btn-group-sm">
+                        <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
                             <a (click)="onOpenModal(acercade, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
                             <a (click)="onOpenModal(acercade, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                         </div>

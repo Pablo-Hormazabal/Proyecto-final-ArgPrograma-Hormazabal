@@ -14,6 +14,10 @@ import { ProyectosComponent } from './@components/proyectos/proyectos.component'
 import { HttpClientModule } from '@angular/common/http';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { IndexComponent } from './index/index.component';
+import { LoginComponent } from './auth/login.component';
+import { interceptorProvider } from './interceptors/portfolio-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,10 @@ import { FormsModule } from '@angular/forms';
     ExperienciaComponent,
     FooterComponent,
     HardSoftSkillsComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    LoginComponent,
+    MenuComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
 
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

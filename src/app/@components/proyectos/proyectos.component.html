@@ -11,7 +11,7 @@
     </div>
     <div class="content">
         <div class="proyectos2" id="main-proyectos">
-            <div>
+            <div *ngIf="isAdmin">
                 <button (click)="onOpenProyectosModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
             </div>
             <div *ngFor="let proyectos of proyectoss">
@@ -27,7 +27,7 @@
                     <a href="{{proyectos?.link}}" class="btn btn-link active" role="button" aria-pressed="true">Link</a>
                     <br>
                 </div>
-                <div class="float-right btn-group btn-group-sm">
+                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
                     <a (click)="onOpenProyectosModal(proyectos, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
                     <a (click)="onOpenProyectosModal(proyectos, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                 </div>

@@ -1,20 +1,24 @@
 <!-- EDUCACION -->
 <section class="educacion">
+    <div>
+
+    </div>
     <div class="imageneducacion">
-        <img src="assets/img/educacion2.png" alt="">
         <h1>
             Educación
         </h1>
+        <img src="assets/img/educacion2.png" alt="">
+
     </div>
     <div class="content">
         <div class="educacion2" id="main-educacion">
-            <div>
+            <div *ngIf="isAdmin">
                 <button (click)="onOpenModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
             </div>
             <div *ngFor="let educacion of educacions">
                 <div class="logoyedu">
                     <div>
-                        <img [src]="educacion.imagenEducacion">
+                        <img [src]="educacion.imagen_educacion">
                     </div>
                     <div class="textedu">
                         <h2>
@@ -27,16 +31,17 @@
                     </div>
                     <br>
                 </div>
-                <div class="float-right btn-group btn-group-sm">
-                    <a (click)="onOpenModal(educacion, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
+
+                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
+                    <a (click)="onOpenModal(educacion, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil-square" aria-hidden="true"></i>Editar </a>
                     <a (click)="onOpenModal(educacion, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                 </div>
             </div>
         </div>
     </div>
     <br>
-</section>
 
+</section>
 
 <!-- Add Educacion Modal -->
 <div class="modal fade" id="addEducacionModal" tabindex="-1" role="dialog" aria-labelledby="addEducacionModalLabel" aria-hidden="true">
@@ -69,7 +74,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nombre"><b>URL imagen:</b></label>
-                        <input type="text" ngModel name=" imagenEducacion" class="form-control " id="imagenEducacion" placeholder="URL imagen">
+                        <input type="text" ngModel name=" imagen_educacion" class="form-control " id="imagen_educacion" placeholder="URL imagen">
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="add-educacion-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -81,7 +86,7 @@
     </div>
 </div>
 
-<!-- Edit Modal -->
+<!-- Edit Modal Educacion -->
 
 <div class="modal fade" id="updateEducacionModal" tabindex="-1" role="dialog" aria-labelledby="educacionEditModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -112,9 +117,10 @@
                         <input type="text" ngModel="{{editEducacion?.fechafinal}}" name="fechafinal" class="form-control" id="fechafinal" aria-describedby="emailHelp" placeholder="fecha de finalizacion">
                     </div>
                     <div class="form-group">
-                        <label for="imagenEducacion"><b>URL imagen:</b></label>
-                        <input type="text" ngModel="{{editEducacion?.imagenEducacion}}" name=" imagenEducacion" class="form-control " id="imagenEducacion" aria-describedby="emailHelp " placeholder="URL imagen">
+                        <label for="imagen_educacion"><b>URL Imagen:</b></label>
+                        <input type="text" ngModel="{{editEducacion?.imagen_educacion}}" name="imagen_educacion" class="form-control" id="imagen_educacion" aria-describedby="emailHelp" placeholder="URL Imagen">
                     </div>
+
                     <div class="modal-footer ">
                         <button type="button " id="add-educacion-form " data-dismiss="modal" class="btn btn-secondary ">Cerrar</button>
                         <button (click)="onUpdateEducacion(editForm.value) " data-dismiss="modal" class="btn btn-primary ">Guardar</button>
@@ -125,7 +131,7 @@
     </div>
 </div>
 
-<!-- Delete Modal -->
+<!-- Delete Modal Educacion -->
 <div class="modal fade" id="deleteEducacionModal" tabindex="-1" role="dialog" aria-labelledby="educacionModelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

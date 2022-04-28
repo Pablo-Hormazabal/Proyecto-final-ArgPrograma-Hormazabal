@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HardSoftSkills } from 'src/app/models/hard-soft-skills';
 import { HardSoftSkillsService } from 'src/app/servicios/hard-soft-skills.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-hard-soft-skills',
@@ -13,12 +14,21 @@ export class HardSoftSkillsComponent implements OnInit {
   public hardSoftSkillss:HardSoftSkills[]=[];
   public editHardSoftSkills: HardSoftSkills;
   public eliminarHardSoftSkills: HardSoftSkills;
+  roles: string[];
+  isAdmin = false;
 
-  constructor(private hardSoftSkillsService: HardSoftSkillsService) { }
+  constructor(private hardSoftSkillsService: HardSoftSkillsService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.hardSoftSkillsService.getHardsoftskills()
     .subscribe(response=> this.hardSoftSkillss=response);
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
   public getHardSoftSkills(): void {
     this.hardSoftSkillsService.getHardsoftskills().subscribe(

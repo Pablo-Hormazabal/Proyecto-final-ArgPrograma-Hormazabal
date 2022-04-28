@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Proyectos } from 'src/app/models/proyectos';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
+import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
   selector: 'app-proyectos',
@@ -13,12 +14,21 @@ export class ProyectosComponent implements OnInit {
   public proyectoss: Proyectos[]=[];
   public editProyectos: Proyectos;
   public eliminarProyectos: Proyectos;
+  roles: string[];
+  isAdmin = false;
 
-  constructor(private proyectosService: ProyectosService) { }
+  constructor(private proyectosService: ProyectosService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.proyectosService.getProyectos()
     .subscribe(response =>this.proyectoss=response);
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
   public getProyectos(): void {
     this.proyectosService.getProyectos().subscribe(

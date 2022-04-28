@@ -9,26 +9,31 @@
         </div>
     </div>
     <div class="content col-sm-3 col-md-3 col-lg-3">
-        <div>
+        <div *ngIf="isAdmin">
             <button (click)="onOpenHardSoftSkillsModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
         </div>
         <br>
         <h4>Habilidades blandas:</h4>
+
         <h4>Lenguajes de programación:</h4>
         <div class="hardSoftSkills2" id="main-hardSoftSkills">
-            <div *ngFor="let hardSoftSkills of hardSoftSkillss">
-                <div>
-                    <div>
-                        <circle-progress [imageSrc]="'{{hardSoftSkills.link}}'" [imageHeight]="50" [imageWidth]="50" [showImage]="true" [percent]="95" [radius]="50" [title]="'HTML'" [titleColor]="'white'" [showSubtitle]="false" [showUnits]="false" [outerStrokeWidth]="8" [innerStrokeWidth]="2"
-                            [outerStrokeColor]="'#65fff9'" [innerStrokeColor]="'#bbeef9'" [animation]="true" [animationDuration]="600">
-                        </circle-progress>
+            <div class="container">
+                <div class="row">
+                    <div class="text-center col-sm-3 col-md-3 col-lg-3" *ngFor="let hardSoftSkills of hardSoftSkillss">
+                        <div>
+                            <h5><b>{{hardSoftSkills.nombre}}</b></h5>
+                            <circle-progress [imageSrc]="hardSoftSkills.link" [imageHeight]="50" [imageWidth]="50" [showImage]="true" [percent]="hardSoftSkills.nivel" [radius]="50" [title]="hardSoftSkills.nombre" [titleColor]="'white'" [showSubtitle]="false" [showUnits]="false"
+                                [outerStrokeWidth]="8" [innerStrokeWidth]="2" [outerStrokeColor]="'#4882c2'" [innerStrokeColor]="'#e7e8ea'" [animation]="true" [animationDuration]="600">
+                            </circle-progress>
+                        </div>
+                        <br>
+                        <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
+                            <a (click)="onOpenHardSoftSkillsModal(hardSoftSkills, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
+                            <a (click)="onOpenHardSoftSkillsModal(hardSoftSkills, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                        </div>
                     </div>
-                    <br>
                 </div>
-                <div class="float-right btn-group btn-group-sm">
-                    <a (click)="onOpenHardSoftSkillsModal(hardSoftSkills, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
-                    <a (click)="onOpenHardSoftSkillsModal(hardSoftSkills, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
-                </div>
+
             </div>
         </div>
         <h4>Otro:</h4>
