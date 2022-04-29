@@ -1,46 +1,68 @@
-/*EXPERIENCIA*/
+/* EXPERIENCIA*/
+
+.barra {
+    background-color: #141414;
+}
+
+img {
+    width: 50px;
+}
+
+.container {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.textExperiencia {
+    width: 50%;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(2, 40, 102, 0.1);
+    border-radius: 60px 60px 60px 60px;
+    padding: 1%;
+    text-shadow: 4px 4px 4px #0043a7;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+}
 
 .experiencia {
     justify-content: center;
     padding-left: auto;
     padding-right: auto;
     display: flex;
-    color: #bdbdbd;
-    /*
-    width: 100vw;
-    height: 100vh;*/
-    background: #000063;
+    background: #141414;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
-.experiencia .content {
-    background: rgba(162, 175, 188, 0.3);
+#botones {
+    margin-left: 5%;
+}
+
+.Cuadro {
+    background: rgba(162, 175, 188, 0.1);
     /*border-radius: 60px 60px 60px 60px;*/
     padding: 2%;
     height: auto;
     justify-content: center;
-    padding-left: auto;
-    padding-right: auto;
-    width: 70%;
-    color: #bdbdbd
-}
-
-.experienciaimg img {
-    width: 70%;
-}
-
-.experienciaimg {
-    width: 30%;
-    background: #212121;
-    padding: 10px;
+    width: 100%;
     color: #fff;
-    padding-left: auto;
-    padding-right: auto;
-    display: grid;
-    place-items: center;
-    text-shadow: 2px 2px 0px #0043a7;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #0043a7;
 }
 
-.experienciaimg h1 {
-    font-size: 35px;
-    text-align: center;
+.Cuadro h2:hover {
+    font-weight: bold;
+}
+
+.Cuadro:hover {
+    box-shadow: #0043a7 0 0 5px 5px;
+}
+
+#agre {
+    margin-left: 0%;
 }

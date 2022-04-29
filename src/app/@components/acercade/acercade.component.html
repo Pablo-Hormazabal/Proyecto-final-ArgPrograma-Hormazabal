@@ -1,53 +1,73 @@
 <!-- ACERCA DE -->
+<br>
+<div class="barra">
 
-<section class="acercade">
-    <div class="fotoacercade">
-        <div>
-            <h1>
-                Sobre mi
-            </h1>
-            <img src="assets/img/perfil1.jpg" alt="perfil" class="fotoperfil">
-
-        </div>
+    <div class="textSobremi"><br>
+        <h1><b>Sobre mi:</b></h1>
+        <br>
     </div>
-    <div class="content" id="main-container">
+</div>
+<section class="acercade">
+    <div class="container">
+        <div *ngIf="isAdmin" id="agre">
+            <button (click)="onOpenModal(null!, 'add')" type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+        </div>
         <div class="datos">
             <div id="Datosright">
                 <div class="sobremi" id="main-sobremi">
-                    <div *ngIf="isAdmin">
-                        <button (click)="onOpenModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
-                    </div>
+
                     <div *ngFor="let acercade of acercades">
-                        <div>
-                            <p>
-                                Descripcion: <b> {{acercade?.descripcion}}</b>
-                            </p>
-                            <p>
-                                <b>Nombre: </b><b>{{acercade?.nombre}} {{acercade?.apellido}}</b>
-                            </p>
-                            <p>
-                                <b>Fecha de Nacimiento:</b> {{acercade?.fecha_nacimiento}}
-                            </p>
-                            <p id>
-                                <b>Ciudad:</b> {{acercade?.ciudad}}
-                            </p>
-                            <p>
-                                <b>Celular:</b> {{acercade?.celular}}
-                            </p>
-                            <p>
-                                <b>E-mail:</b> {{acercade?.email}}
-                            </p>
-                        </div>
-                        <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
-                            <a (click)="onOpenModal(acercade, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
-                            <a (click)="onOpenModal(acercade, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-8 col-lg-8">
+                                <br>
+                                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
+                                    <a (click)="onOpenModal(acercade, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a (click)="onOpenModal(acercade, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                </div>
+                                <br>
+                                <div>
+                                    <br>
+                                    <h4>
+                                        {{acercade?.descripcion}}
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-sm-4 col-lg-4">
+                                <div class="Cuadro">
+                                    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                        <div class="card-body">
+                                            <img class="card-img-top" [src]="acercade.apellido" alt="Card image cap">
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="textoacercade">
+                                                <i class="fa-solid fa-location-pin"></i> {{acercade?.ciudad}}
+                                            </p>
+                                            <p class="textoacercade">
+                                                <i class="fa-brands fa-whatsapp"></i> {{acercade?.celular}}
+                                            </p>
+                                            <p class="textoacercade">
+                                                <i class="fa-solid fa-envelope"></i> {{acercade?.email}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
+
+
+
+
 </section>
+
 
 
 <!-- Add Employee Modal -->
@@ -63,17 +83,13 @@
             <div class="modal-body">
                 <form #addForm="ngForm" (ngSubmit)="onAddAcercade(addForm)">
                     <div class="form-group">
-                        <label for="nombre"><b>Nombre:</b></label>
+                        <label for="nombre"><b>Nombre y apellido:</b></label>
                         <input type="text" ngModel name="nombre" class="form-control" id="nombre" placeholder="Nombre">
                     </div>
                     <input type="hidden" ngModel name="id" id="id" class="form-control" placeholder="Email">
                     <div class="form-group">
-                        <label for="nombre"><b>Apellido:</b></label>
-                        <input type="text" ngModel name="apellido" id="apellido" class="form-control" placeholder="Apellido">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre"><b>Fecha de Nacimiento:</b></label>
-                        <input type="text" ngModel name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento">
+                        <label for="nombre"><b>URL foto de perfil:</b></label>
+                        <input type="text" ngModel name="apellido" id="apellido" class="form-control" placeholder="URL foto de perfil">
                     </div>
                     <div class="form-group">
                         <label for="nombre"><b>Ciudad:</b></label>
@@ -116,17 +132,13 @@
             <div class="modal-body">
                 <form #editForm="ngForm">
                     <div class="form-group">
-                        <label for="nombre"><b>Nombre:</b></label>
+                        <label for="nombre"><b>Nombre y apellido:</b></label>
                         <input type="text" ngModel="{{editAcercade?.nombre}}" name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Name">
                     </div>
                     <input type="hidden" ngModel="{{editAcercade?.id}}" name="id" class="form-control" id="id" placeholder="Email">
                     <div class="form-group">
-                        <label for="nombre"><b>Apellido:</b></label>
-                        <input type="text" ngModel="{{editAcercade?.apellido}}" name="apellido" class="form-control" id="apellido" aria-describedby="emailHelp" placeholder="Apellido">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre"><b>Fecha de Nacimiento:</b></label>
-                        <input type="text" ngModel="{{editAcercade?.fecha_nacimiento}}" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" aria-describedby="emailHelp" placeholder="Fecha de Nacimiento">
+                        <label for="nombre"><b>URL foto de perfil:</b></label>
+                        <input type="text" ngModel="{{editAcercade?.apellido}}" name="apellido" class="form-control" id="apellido" aria-describedby="emailHelp" placeholder="URL foto de perfil">
                     </div>
                     <div class="form-group">
                         <label for="nombre"><b>Ciudad:</b></label>

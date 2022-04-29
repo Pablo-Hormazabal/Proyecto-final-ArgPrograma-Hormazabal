@@ -1,35 +1,38 @@
 <!-- EXPERIENCIA -->
-<section class="experiencia">
-    <div class="experienciaimg">
-        <img src="assets/img/experiencia3.png" alt="">
-        <h1>
-            Experiencia
-        </h1>
+<div class="barra">
+    <div class="textExperiencia"><br>
+        <h1><b>Experiencia:</b></h1>
+        <br>
     </div>
-    <div class="content">
-        <div *ngIf="isAdmin">
-            <button (click)="onOpenExperienciaModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
+</div>
+<section class="experiencia">
+    <div class="container">
+        <div *ngIf="isAdmin" id="agre">
+            <button (click)="onOpenExperienciaModal(null!, 'add')" type="button" class="btn btn-primary"><i
+                    class="fa-solid fa-plus"></i></button>
         </div>
         <div class="experiencia2" id="main-experiencia">
             <div *ngFor="let experiencia of experiencias">
-                <div>
-                    <div>
-                        <h2>
-                            Funcion: {{experiencia?.nombre}}
-                        </h2>
-                        <p>
-                            Descripción: {{experiencia?.descripcion}}
-                        </p>
-                    </div>
-                    <br>
-                </div>
-                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
-                    <a (click)="onOpenExperienciaModal(experiencia, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
+                <br>
+                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin" id="botones">
+                    <a (click)="onOpenExperienciaModal(experiencia, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a (click)="onOpenExperienciaModal(experiencia, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                 </div>
+                <br><br>
+                <div class="Cuadro">
+                    <h2>
+                        {{experiencia?.nombre}}
+                    </h2>
+                    <hr>
+                    <p>
+                        {{experiencia?.descripcion}}
+                    </p>
+                    <br>
+                </div>
+                <br>
             </div>
+            <br>
         </div>
-
     </div>
 </section>
 
@@ -40,8 +43,8 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="addExperienciaModalLabel">Agregar otra Experiencia:</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form #addForm="ngForm" (ngSubmit)="onAddExperiencia(addForm)">
@@ -73,8 +76,8 @@
             <div class="modal-header">
                 <h2 class="modal-title" id="updateExperienciaModalLabel"><b>Editar sección Experiencia:</b></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <form #editForm="ngForm">
@@ -105,8 +108,8 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModelLabel">Delete Experiencia</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <p>¿Esta seguro que desea eliminar a {{eliminarExperiencia?.nombre}}?</p>

@@ -1,37 +1,58 @@
 /*---------------CATEGORIA ACERCA DE...---------*/
 
+.barra {
+    background-color: #141414;
+}
+
+.textoacercade {
+    font-size: 12px;
+}
+
+.textSobremi {
+    width: 50%;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    background: rgba(2, 40, 102, 0.1);
+    border-radius: 60px 60px 60px 60px;
+    padding: 1%;
+    text-shadow: 4px 4px 4px #0043a7;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+}
+
 .acercade {
     display: flex;
     /*background: url("./imagenes//datos2.jpeg") no-repeat center center/cover;
 */
-    color: #bdbdbd;
-    background: #000063;
+    color: #fff;
+    background: #141414;
+}
+
+.Cuadro {
+    background: rgba(33, 37, 41, 1);
+    /*border-radius: 60px 60px 60px 60px;*/
+    padding: 2%;
+    height: auto;
+    justify-content: center;
+    width: 80%;
+    color: #fff;
+    border-radius: 30px 30px 30px 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #0043a7;
 }
 
 .acercade .content {
     background: rgba(162, 175, 188, 0.3);
     /*border-radius: 60px 60px 60px 60px;*/
     padding: 2%;
-    height: auto;
     justify-content: center;
     padding-left: auto;
     padding-right: auto;
     width: 70%;
     color: #bdbdbd
-}
-
-.fotoacercade img {
-    width: 200px;
-    border-radius: 100%;
-}
-
-.fotoacercade {
-    width: 30%;
-    background: #212121;
-    color: #fff;
-    display: grid;
-    place-items: center;
-    text-shadow: 2px 2px 0px #0043a7;
 }
 
 .acercade h1 {

@@ -1,36 +1,40 @@
 <!-- PROYECTOS -->
-
-<section class="proyectos">
-    <div class="proyectoimg">
-        <img src="assets/img/proyectos5.jpg" alt="">
-        <div>
-            <h1>
-                Proyectos
-            </h1>
-        </div>
+<div class="barra">
+    <div class="textProyectos"><br>
+        <h1><b>Proyectos:</b></h1>
+        <br>
     </div>
+</div>
+<section class="proyectos">
     <div class="content">
+        <div *ngIf="isAdmin" id="agre">
+            <button (click)="onOpenProyectosModal(null!, 'add')" type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i></button>
+        </div>
         <div class="proyectos2" id="main-proyectos">
-            <div *ngIf="isAdmin">
-                <button (click)="onOpenProyectosModal(null!, 'add')" type="button" class="btn btn-primary">Agregar</button>
-            </div>
+
+            <br>
             <div *ngFor="let proyectos of proyectoss">
-                <div>
+                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin" id="botones">
+                    <a (click)="onOpenProyectosModal(proyectos, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a (click)="onOpenProyectosModal(proyectos, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                </div>
+                <br><br>
+                <div class="Cuadro">
                     <div>
                         <h2>
                             {{proyectos?.titulo}}
                         </h2>
+                        <hr>
                         <p>
                             {{proyectos?.descripcion}}
                         </p>
                     </div>
-                    <a href="{{proyectos?.link}}" class="btn btn-link active" role="button" aria-pressed="true">Link</a>
+                    <a href="{{proyectos?.link}}" class="btn btn-link active" role="button" aria-pressed="true"> <i class="fa-solid fa-link"></i> Link</a>
                     <br>
                 </div>
-                <div class="float-right btn-group btn-group-sm" *ngIf="isAdmin">
-                    <a (click)="onOpenProyectosModal(proyectos, 'edit')" class="btn btn-success tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i>Editar </a>
-                    <a (click)="onOpenProyectosModal(proyectos, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
-                </div>
+                <br>
+                <br>
+
             </div>
 
         </div>
