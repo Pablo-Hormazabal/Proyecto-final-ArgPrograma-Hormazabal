@@ -7,7 +7,7 @@ import { HardSoftSkills } from '../models/hard-soft-skills';
   providedIn: 'root'
 })
 export class HardSoftSkillsService {
-  urlhsys: string="http://localhost:7070/api/hard_soft_skills/";
+  urlhsys: string="https://portfolio-hormazabal.herokuapp.com/api/hard_soft_skills/";
 
 
   constructor(private http: HttpClient) { }

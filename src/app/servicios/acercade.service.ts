@@ -8,7 +8,7 @@ import { Acercade} from '../models/acercade';
 })
 export class AcercadeService {
 
-  urlpersona: string='http://localhost:7070/api/persona/';
+  urlpersona: string='https://portfolio-hormazabal.herokuapp.com/api/persona/';
 
   
   constructor(private http:HttpClient) { }

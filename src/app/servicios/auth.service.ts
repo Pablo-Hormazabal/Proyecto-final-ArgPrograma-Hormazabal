@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  authURL = 'http://localhost:7070/auth/';
+  authURL = 'https://portfolio-hormazabal.herokuapp.com/auth/';
 
   constructor(private httpClient: HttpClient) { }
 

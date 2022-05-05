@@ -7,7 +7,7 @@ import { Proyectos } from '../models/proyectos';
   providedIn: 'root'
 })
 export class ProyectosService {
-  urlproyectos: string="http://localhost:7070/api/proyecto/"
+  urlproyectos: string="https://portfolio-hormazabal.herokuapp.com/api/proyecto/"
 
   constructor(private http: HttpClient) { }
   getProyectos(): Observable<Proyectos[]>{

@@ -8,7 +8,7 @@ import { Educacion } from '../models/educacion';
 })
 export class EducacionService {
   //Esta URL obtiene el listado de todo los empleados en el backend
-  url: string='http://localhost:7070/api/educacion/';
+  url: string='https://portfolio-hormazabal.herokuapp.com/api/educacion/';
 
 
   constructor(private http:HttpClient) { }
